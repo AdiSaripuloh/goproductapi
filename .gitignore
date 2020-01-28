@@ -1,0 +1,14 @@
+# Editor files
+.vscode/
+.idea/
+
+# OS specific files
+.DS_Store
+
+# Go dep dependencies
+vendor/
+
+# Test output
+test.out
+coverage.out
+coverage.html
