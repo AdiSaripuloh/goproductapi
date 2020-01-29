@@ -4,8 +4,8 @@ import (
 	uuid "github.com/satori/go.uuid"
 	"net/http"
 
-	"github.com/goproductapi/common/resolvers"
-	"github.com/goproductapi/modules/product/dto"
+	"github.com/AdiSaripuloh/goproductapi/common/resolvers"
+	"github.com/AdiSaripuloh/goproductapi/modules/product/dto"
 
 	"github.com/gin-gonic/gin"
 )

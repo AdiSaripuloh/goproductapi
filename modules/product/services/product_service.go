@@ -4,9 +4,9 @@ import (
 	"errors"
 	"sync"
 
-	"github.com/goproductapi/modules/product/dto"
-	"github.com/goproductapi/modules/product/models"
-	"github.com/goproductapi/modules/product/repositories"
+	"github.com/AdiSaripuloh/goproductapi/modules/product/dto"
+	"github.com/AdiSaripuloh/goproductapi/modules/product/models"
+	"github.com/AdiSaripuloh/goproductapi/modules/product/repositories"
 
 	"github.com/jinzhu/copier"
 	uuid "github.com/satori/go.uuid"

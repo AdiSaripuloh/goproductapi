@@ -1,7 +1,7 @@
 package repositories
 
 import (
-	"github.com/goproductapi/modules/product/models"
+	"github.com/AdiSaripuloh/goproductapi/modules/product/models"
 
 	uuid "github.com/satori/go.uuid"
 )

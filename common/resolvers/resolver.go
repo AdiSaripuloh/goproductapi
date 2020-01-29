@@ -1,8 +1,8 @@
 package resolvers
 
 import (
-	inmemoryProductRepositories "github.com/goproductapi/modules/product/repositories/inmemory"
-	productServices "github.com/goproductapi/modules/product/services"
+	inmemoryProductRepositories "github.com/AdiSaripuloh/goproductapi/modules/product/repositories/inmemory"
+	productServices "github.com/AdiSaripuloh/goproductapi/modules/product/services"
 )
 
 // Resolver struct

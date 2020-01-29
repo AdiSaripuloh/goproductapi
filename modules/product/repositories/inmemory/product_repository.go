@@ -4,8 +4,8 @@ import (
 	"errors"
 	"sync"
 
-	"github.com/goproductapi/modules/product/models"
-	"github.com/goproductapi/modules/product/repositories"
+	"github.com/AdiSaripuloh/goproductapi/modules/product/models"
+	"github.com/AdiSaripuloh/goproductapi/modules/product/repositories"
 
 	uuid "github.com/satori/go.uuid"
 )
@@ -47,7 +47,7 @@ func (repo *productRepository) GetByUUID(id uuid.UUID) (*models.Product, error) 
 }
 
 func (repo *productRepository) GetAll() ([]models.Product, error) {
-	products := []models.Product{}
+	var products []models.Product
 	for _, item := range repo.storage.Products {
 		products = append(products, item)
 	}

@@ -1,10 +1,12 @@
 package main
 
 import (
+	"log"
 	"net/http"
+	"os"
 
-	"github.com/goproductapi/common/resolvers"
-	productHandlers "github.com/goproductapi/modules/product/handlers"
+	"github.com/AdiSaripuloh/goproductapi/common/resolvers"
+	productHandlers "github.com/AdiSaripuloh/goproductapi/modules/product/handlers"
 
 	"github.com/gin-gonic/gin"
 )
@@ -20,11 +22,24 @@ func init() {
 }
 
 func main() {
+	port := os.Getenv("PORT")
 	router := gin.Default()
+	router.Use(gin.Logger())
+	router.Use(gin.Recovery())
+
+	if port == "" {
+		port = "8000"
+	}
+
+	router.LoadHTMLGlob("public/*")
 	router.GET("/", func(ctx *gin.Context) {
-		ctx.JSON(http.StatusOK, gin.H{
-			"data": "Hello world!",
-		})
+		ctx.HTML(
+			http.StatusOK,
+			"index.html",
+			gin.H{
+				"title": "Home Page",
+			},
+		)
 	})
 
 	api := router.Group("api")
@@ -34,5 +49,7 @@ func main() {
 		api.GET("/products", productHandler.GetAll)
 	}
 
-	router.Run(":8000")
+	if err := router.Run(":9000"); err != nil {
+		log.Fatal(err)
+	}
 }

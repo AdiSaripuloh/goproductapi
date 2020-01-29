@@ -1,6 +1,6 @@
 package inmemory
 
-import "github.com/goproductapi/modules/product/models"
+import "github.com/AdiSaripuloh/goproductapi/modules/product/models"
 
 // ProductStorage to store in store product in memory
 type ProductStorage struct {
