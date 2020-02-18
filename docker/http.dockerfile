@@ -23,7 +23,7 @@ RUN cd cmd/http/ \
 
 # This results in a single layer image
 FROM alpine:latest
-RUN apk --no-cache add ca-certificates
+RUN apk update && apk --no-cache add ca-certificates
 COPY --from=build /go/src/github.com/AdiSaripuloh/goproductapi .
 RUN chmod +x cmd/http/main
 CMD ["./cmd/http/main"]
