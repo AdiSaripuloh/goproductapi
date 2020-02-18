@@ -1,9 +1,5 @@
 # Go Product API
 
-Install dependencies.
+Run `docker-compose up -d`
 
-`dep ensure -v --vendor-only`
-
-Running this project.
-
-`go run cmd/http/main.go`
+Open `http://localhost:8000`
