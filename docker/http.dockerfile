@@ -4,6 +4,7 @@ MAINTAINER Adi Saripuloh <adisaripuloh@gmail.com>
 # Install tools required to build the project
 # We will need to run `docker build --no-cache .` to update those dependencies
 RUN export GOBIN=$GOPATH/bin \
+	&& apk update \
 	&& apk add --no-cache git curl \
 	&& curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
 # Gopkg.toml and Gopkg.lock lists project dependencies
