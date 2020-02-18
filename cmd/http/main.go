@@ -49,7 +49,7 @@ func main() {
 		api.GET("/products", productHandler.GetAll)
 	}
 
-	if err := router.Run(":9000"); err != nil {
+	if err := router.Run(":8000"); err != nil {
 		log.Fatal(err)
 	}
 }

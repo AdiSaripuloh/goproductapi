@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+    app:
+        container_name: goproductapi_http
+        build:
+            context: ./
+            dockerfile: docker/http.dockerfile
+        links:
+            - mysql_database
+        ports:
+            - 8000:8000
+
+    mysql_database:
+        container_name: mysql_database
+        image: mysql:5.7
+        command: --default-authentication-plugin=mysql_native_password
+        restart: always
+        volumes:
+            - ./docker/dbdata/mysql:/var/lib/mysql
+        environment:
+            - 'MYSQL_DATABASE=products'
+            - 'MYSQL_USER=goproductapi'
+            - 'MYSQL_PASSWORD=goproductapi'
+            - 'MYSQL_ROOT_PASSWORD=goproductapi'
+        ports:
+            - 3306:3306

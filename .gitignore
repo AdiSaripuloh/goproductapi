@@ -1,6 +1,7 @@
 # Editor files
 .vscode/
 .idea/
+docker/dbdata/*
 
 # OS specific files
 .DS_Store
