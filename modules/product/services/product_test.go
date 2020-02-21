@@ -30,8 +30,8 @@ func TestProductService_GetAllProduct(t *testing.T) {
 
 	products, _ := service.GetAll()
 
-	assert.Equal(t, 2, len(products))
+	assert.Equal(t, 4, len(products))
 	assert.Equal(t, "Product 1", products[0].Name)
 	assert.Equal(t, "Product 2", products[1].Name)
-	assert.Equal(t, "Product 4", products[2].Name)
+	assert.Equal(t, "Product 3", products[2].Name)
 }
