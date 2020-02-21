@@ -1,25 +1,21 @@
 FROM golang:1.13.8-alpine3.11 AS build
 MAINTAINER Adi Saripuloh <adisaripuloh@gmail.com>
-# set GOBIN path
 # Install tools required to build the project
 # We will need to run `docker build --no-cache .` to update those dependencies
-RUN export GOBIN=$GOPATH/bin \
-	&& apk update \
-	&& apk add --no-cache git curl \
-	&& curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-# Gopkg.toml and Gopkg.lock lists project dependencies
-# These layers will only be re-built when Gopkg files are updated
-COPY Gopkg.lock Gopkg.toml /go/src/github.com/AdiSaripuloh/goproductapi/
+RUN apk update \
+	&& apk add --no-cache git
+# go.mod and go.sum lists project dependencies
+COPY go.mod go.sum /go/src/github.com/AdiSaripuloh/goproductapi/
 WORKDIR /go/src/github.com/AdiSaripuloh/goproductapi/
-# Install library dependencies
-RUN dep ensure -v -vendor-only
+# Get dependancies - will also be cached if we won't change mod/sum
+RUN go mod download
 # Remove tools after build the project
-RUN apk del git curl
+RUN apk del git
 # Copy all project and build it
 # This layer will be rebuilt when ever a file has changed in the project directory
 COPY . /go/src/github.com/AdiSaripuloh/goproductapi/
 RUN cd cmd/http/ \
-	&& go build -o main
+	&& CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -o main
 
 # This results in a single layer image
 FROM alpine:latest
